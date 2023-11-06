@@ -83,4 +83,38 @@ public class PasswordValidationTest {
         Assertions.assertTrue(result);
 
     }
+
+    @Test
+    void containsLowerAndUppercaseCharacters_WhenEmpty_ExpectFalse() {
+        //GIVEN
+        String password =  "";
+        //WHEN
+        boolean result = PasswordValidation.containsLowerAndUppercaseCharacters(password);
+
+        //THEN
+        Assertions.assertFalse(result);
+
+    }
+    @Test
+    void containsLowerAndUppercaseCharacters_WhenAa_ExpectTrue() {
+        //GIVEN
+        String password =  "Aa";
+        //WHEN
+        boolean result = PasswordValidation.containsLowerAndUppercaseCharacters(password);
+
+        //THEN
+        Assertions.assertTrue(result);
+
+    }
+    @Test
+    void containsLowerAndUppercaseCharacters_WhenA_ExpectFalse() {
+        //GIVEN
+        String password =  "a";
+        //WHEN
+        boolean result = PasswordValidation.containsLowerAndUppercaseCharacters(password);
+
+        //THEN
+        Assertions.assertFalse(result);
+
+    }
 }
