@@ -31,10 +31,21 @@ public class PasswordValidation {
     public static boolean isWellKnowPassword(String password) {
         if("123456".equals(password)) {
             return true;
-        }if("passwort".equals(password)) {
+        }
+        if("passwort".equals(password)) {
+            return true;
+        }
+        if("Password1".equals(password)) {
             return true;
         }
 
         return false;
+    }
+
+    public static boolean isSafe(String password) {
+        return isAtleast8CharactersLong(password)
+                && containsLowerAndUppercaseCharacters(password)
+                && containsDigit(password)
+                && !isWellKnowPassword(password);
     }
 }
