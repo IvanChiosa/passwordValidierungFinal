@@ -7,9 +7,9 @@ public class PasswordValidationTest {
     @Test
     void isAtLeast8CharactersLong_WhenEmpty_ExpectFalse() {
         //GIVEN
-         String password =  "";
+        String password = "";
         //WHEN
-       boolean result = PasswordValidation.isAtleast8CharactersLong(password);
+        boolean result = PasswordValidation.isAtleast8CharactersLong(password);
 
         //THEN
         Assertions.assertFalse(result);
@@ -19,7 +19,7 @@ public class PasswordValidationTest {
     @Test
     void isAtLeast8CharactersLong_When8Characters_ExpectTrue() {
         //GIVEN
-        String password =  "12345677";
+        String password = "12345677";
         //WHEN
         boolean result = PasswordValidation.isAtleast8CharactersLong(password);
 
@@ -27,10 +27,11 @@ public class PasswordValidationTest {
         Assertions.assertTrue(result);
 
     }
+
     @Test
     void isAtLeast8CharactersLong_When7Characters_ExpectFalse() {
         //GIVEN
-        String password =  "123456789";
+        String password = "123456789";
         //WHEN
         boolean result = PasswordValidation.isAtleast8CharactersLong(password);
 
@@ -42,7 +43,7 @@ public class PasswordValidationTest {
     @Test
     void isAtLeast8CharactersLong_When9Characters_ExpectTrue() {
         //GIVEN
-        String password =  "123456789";
+        String password = "123456789";
         //WHEN
         boolean result = PasswordValidation.isAtleast8CharactersLong(password);
 
@@ -50,10 +51,11 @@ public class PasswordValidationTest {
         Assertions.assertTrue(result);
 
     }
+
     @Test
     void containsDigit_WhenEmpty_ExpectFalse() {
         //GIVEN
-        String password =  "";
+        String password = "";
         //WHEN
         boolean result = PasswordValidation.containsDigit(password);
 
@@ -61,10 +63,11 @@ public class PasswordValidationTest {
         Assertions.assertFalse(result);
 
     }
+
     @Test
     void containsDigit_WhenOneDigit_ExpectTrue() {
         //GIVEN
-        String password =  "1";
+        String password = "1";
         //WHEN
         boolean result = PasswordValidation.containsDigit(password);
 
@@ -72,10 +75,11 @@ public class PasswordValidationTest {
         Assertions.assertTrue(result);
 
     }
+
     @Test
     void containsDigit_WhenMixedText_ExpectTrue() {
         //GIVEN
-        String password =  "nnjfgn123fdjsfjsfh12322";
+        String password = "nnjfgn123fdjsfjsfh12322";
         //WHEN
         boolean result = PasswordValidation.containsDigit(password);
 
@@ -87,7 +91,7 @@ public class PasswordValidationTest {
     @Test
     void containsLowerAndUppercaseCharacters_WhenEmpty_ExpectFalse() {
         //GIVEN
-        String password =  "";
+        String password = "";
         //WHEN
         boolean result = PasswordValidation.containsLowerAndUppercaseCharacters(password);
 
@@ -95,10 +99,11 @@ public class PasswordValidationTest {
         Assertions.assertFalse(result);
 
     }
+
     @Test
     void containsLowerAndUppercaseCharacters_WhenAa_ExpectTrue() {
         //GIVEN
-        String password =  "Aa";
+        String password = "Aa";
         //WHEN
         boolean result = PasswordValidation.containsLowerAndUppercaseCharacters(password);
 
@@ -106,12 +111,47 @@ public class PasswordValidationTest {
         Assertions.assertTrue(result);
 
     }
+
     @Test
     void containsLowerAndUppercaseCharacters_WhenA_ExpectFalse() {
         //GIVEN
-        String password =  "a";
+        String password = "a";
         //WHEN
         boolean result = PasswordValidation.containsLowerAndUppercaseCharacters(password);
+
+        //THEN
+        Assertions.assertFalse(result);
+
+    }
+
+    @Test
+    void isWellKnownPassword_WhenEasyPassword_ExpectTrue() {
+        //GIVEN
+        String password = "123456";
+        //WHEN
+        boolean result = PasswordValidation.isWellKnowPassword(password);
+
+        //THEN
+        Assertions.assertTrue(result);
+
+    }
+    @Test
+    void isWellKnownPassword_WhenEasyPassword2_ExpectTrue() {
+        //GIVEN
+        String password = "passwort";
+        //WHEN
+        boolean result = PasswordValidation.isWellKnowPassword(password);
+
+        //THEN
+        Assertions.assertTrue(result);
+
+    }
+    @Test
+    void isWellKnownPassword_WhenHardPassword_ExpectTrue() {
+        //GIVEN
+        String password = "jdnjefrfr565dfjdfgbfvh56><>";
+        //WHEN
+        boolean result = PasswordValidation.isWellKnowPassword(password);
 
         //THEN
         Assertions.assertFalse(result);
