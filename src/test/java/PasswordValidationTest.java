@@ -40,11 +40,44 @@ public class PasswordValidationTest {
     }
 
     @Test
-    void isAtLeast8CharactersLong_When9Characters_ExpectFalse() {
+    void isAtLeast8CharactersLong_When9Characters_ExpectTrue() {
         //GIVEN
         String password =  "123456789";
         //WHEN
         boolean result = PasswordValidation.isAtleast8CharactersLong(password);
+
+        //THEN
+        Assertions.assertTrue(result);
+
+    }
+    @Test
+    void containsDigit_WhenEmpty_ExpectFalse() {
+        //GIVEN
+        String password =  "";
+        //WHEN
+        boolean result = PasswordValidation.containsDigit(password);
+
+        //THEN
+        Assertions.assertFalse(result);
+
+    }
+    @Test
+    void containsDigit_WhenOneDigit_ExpectTrue() {
+        //GIVEN
+        String password =  "1";
+        //WHEN
+        boolean result = PasswordValidation.containsDigit(password);
+
+        //THEN
+        Assertions.assertTrue(result);
+
+    }
+    @Test
+    void containsDigit_WhenMixedText_ExpectTrue() {
+        //GIVEN
+        String password =  "nnjfgn123fdjsfjsfh12322";
+        //WHEN
+        boolean result = PasswordValidation.containsDigit(password);
 
         //THEN
         Assertions.assertTrue(result);
